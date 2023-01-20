@@ -33,11 +33,10 @@ function sumarArray(arrayOfNumbers, cb) {
    // Este resultado debes pasárselo como argumento al callback recibido.
    // [NOTA]: no debes reotrnar nada.
    // Tu código:
-   var resultado = 0;
-   for (var i = 0; i<arrayOfNumbers.length; i++){
-      resultado = resultado + arrayOfNumbers[i];
-   }
-   cb(resultado);
+      const respuesta = arrayOfNumbers.reduce(function (acc, elem){
+       return acc + elem;
+   }, 0);
+   cb(respuesta);
 }
 
 function forEach(array, cb) {
@@ -45,9 +44,9 @@ function forEach(array, cb) {
    // Debes iterar sobre el arreglo, y por cada elemento ejecutar el callback.
    // Debes pasarle el elemento como argumento al callback.
    // Tu código:
-   for (var i=0; i<array.length; i++){
-      cb(array[i]);
-   }
+   array.forEach(function (elemento) {
+      cb(elemento);
+   });
 }
 
 function map(array, cb) {
@@ -55,27 +54,19 @@ function map(array, cb) {
    // Tiene que guardar el resultado devuelto por el callback en cada elemento dentro de un nuevo arreglo.
    // Retorna el nuevo arreglo.
    // Tu código:
-   var respuestas = [];
-
-   for (let i = 0; i < array.length; i++) {
-      respuestas.push(cb(array[i]));
-   }
-   return respuestas;
+   const respuesta = array.map(function  (elemento){
+      return cb(elemento);
+   });
+   return respuesta;
 }
 
 function filter(arrayOfStrings) {
    // Debes identificar todos los elementos el arreglo que comiencen con la letra "a".
    // Luego retorna un nuevo arreglo con estos elementos.
    // Tu código:
-   var elementosConA = [];
-   for (let i = 0; i < arrayOfStrings.length; i++) {
-      if (arrayOfStrings[i].charAt(0) == "a"){
-         elementosConA.push(arrayOfStrings[i]);
-      }
-   
+   const respuesta = arrayOfStrings.filter(conA => conA.charAt(0) == "a");
+   return respuesta;
 
-   }
-   return elementosConA;
 }
 
 /*⚠️ NO MODIFIQUES NADA DEBAJO DE ESTO ⚠️*/
